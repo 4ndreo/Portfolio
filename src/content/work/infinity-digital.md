@@ -1,13 +1,14 @@
 ---
-title: h2.0
-publishDate: 2019-10-02 00:00:00
-img: /assets/stock-4.jpg
-img_alt: Soft pink and baby blue water ripples together in a subtle texture.
+title: Infinity Digital
+publishDate: 2024-03-22 00:00:00
+link: https://infinitydigital-beta.vercel.app/
+img: /assets/screenshots/infinity-digital.png
+img_alt: Screenshot from the home page of Infinity Digital's website
 description: |
   We developed brand positioning and design assets for the launch
   of a new colored water product.
 tags:
-  - Design
+  - Next.js
   - Branding
 ---
 

@@ -6,21 +6,23 @@
 import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import {ViewTransitions} from 'astro:transitions';
 
 interface Props {
 	title?: string | undefined;
 	description?: string | undefined;
 }
 
-const { title, description } = Astro.props;
+const {title, description} = Astro.props;
 ---
 
-<html lang="en">
+<html lang='en'>
 	<head>
 		<MainHead title={title} description={description} />
+		<ViewTransitions />
 	</head>
 	<body>
-		<div class="stack backgrounds">
+		<div class='stack backgrounds'>
 			<Nav />
 			<slot />
 			<Footer />
@@ -28,8 +30,38 @@ const { title, description } = Astro.props;
 
 		<script>
 			// Add “loaded” class once the document has completely loaded.
-			addEventListener('load', () => document.documentElement.classList.add('loaded'));
+			addEventListener('load', () =>
+				document.documentElement.classList.add('loaded'),
+			);
 		</script>
+		<script>
+			import VanillaTilt from 'vanilla-tilt';
+			document.addEventListener('astro:page-load', () => {
+				const tiltFullElements = Array.from(
+					document.querySelectorAll('.tilt-full'),
+				) as HTMLElement[];
+				VanillaTilt.init(tiltFullElements, {
+					max: 5,
+					speed: 400,
+					// glare: true,
+					'full-page-listening': true,
+					reverse: true,
+					gyroscope: true,
+				});
+
+				const tiltElements = Array.from(
+					document.querySelectorAll('.tilt'),
+				) as HTMLElement[];
+				VanillaTilt.init(tiltElements, {
+					max: 3,
+					speed: 400,
+					// glare: true,
+					reverse: true,
+					gyroscope: true,
+				});
+			});
+		</script>
+		<script type='module' src='pixel-canvas.js'></script>
 
 		<style>
 			:root {
@@ -43,7 +75,9 @@ const { title, description } = Astro.props;
 				--bg-blend-mode: darken;
 				--bg-image-aspect-ratio: 2.25;
 				--bg-scale: 1.68;
-				--bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
+				--bg-aspect-ratio: calc(
+					var(--bg-image-aspect-ratio) / var(--bg-scale)
+				);
 				--bg-gradient-size: calc(var(--bg-scale) * 100%);
 			}
 
@@ -94,9 +128,12 @@ const { title, description } = Astro.props;
 				background:
 					/*noise*/
 					url('/assets/backgrounds/noise.png') top center/220px repeat,
-					/*footer*/ var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
-					/*header1*/ var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
-					/*header2*/ var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
+					/*footer*/ var(--bg-image-footer) bottom
+						center/var(--bg-gradient-size) no-repeat,
+					/*header1*/ var(--bg-image-main-curves) top
+						center/var(--bg-gradient-size) no-repeat,
+					/*header2*/ var(--bg-image-main) top
+						center/var(--bg-gradient-size) no-repeat,
 					/*base*/ var(--gray-999);
 				background-blend-mode: /*noise*/
 					overlay,

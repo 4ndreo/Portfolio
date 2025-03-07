@@ -1,13 +1,14 @@
 ---
-title: Duvet Genius
-publishDate: 2020-03-04 00:00:00
-img: /assets/stock-3.jpg
-img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+title: MT Consultores
+publishDate: 2020-08-26 00:00:00
+link: https://mtconsultores.com.ar
+img: /assets/screenshots/mt-consultores.png
+img_alt: Screenshot from the home page of Infinity Digital's website
 description: |
-  We developed a virtual showcase for the softest bedding imaginable.
+  We developed brand positioning and design assets for the launch
+  of a new colored water product.
 tags:
-  - Design
-  - Dev
+  - Donweb Site Builder
   - Branding
 ---
 

@@ -1,23 +1,29 @@
 ---
 import Icon from './Icon.astro';
+import {stats} from '../lang/en';
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Full Stack</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Industry Leader</h2>
-		<p>Neque viverra justo nec ultrices dui. Est ultricies integer quis auctor elit.</p>
-	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Strategy-Minded</h2>
-		<p>Urna porttitor rhoncus dolor purus non enim praesent ornare.</p>
-	</div>
+<section class='box skills'>
+	<pixel-canvas data-gap="3" data-speed="100" data-colors="#2255ff"></pixel-canvas>
+	{
+		stats.map((stat: any) => (
+			<div class='stack gap-2 lg:gap-4'>
+				<Icon
+					icon={stat.icon}
+					color='var(--accent-regular)'
+					size='2.5rem'
+					gradient
+				/>
+				<h2>
+					+ {stat.data.length} {stat.title}
+				</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+					do eiusmod.
+				</p>
+			</div>
+		))
+	}
 </section>
 
 <style>
@@ -33,6 +39,17 @@ import Icon from './Icon.astro';
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
+		position: relative;
+		overflow: hidden;
+
+		pixel-canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+		}
 	}
 
 	.skills h2 {
@@ -60,3 +77,5 @@ import Icon from './Icon.astro';
 		}
 	}
 </style>
+
+<script type="module" src="/src/scripts/pixel-canvas.js"></script>

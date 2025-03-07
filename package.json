@@ -3,15 +3,18 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npm run capture && astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "npm run capture && astro check && astro build",
     "preview": "astro preview",
+    "capture": "node src/scripts/screenshot.js",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.8.6",
     "@astrojs/check": "^0.7.0",
-    "typescript": "^5.4.5"
+    "astro": "^4.8.6",
+    "puppeteer": "^24.3.1",
+    "typescript": "^5.4.5",
+    "vanilla-tilt": "^1.8.1"
   }
 }

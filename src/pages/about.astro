@@ -3,55 +3,93 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+import {getCollection} from 'astro:content';
+
+const background = (await getCollection('background')).sort(
+	(a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf(),
+);
+
+const education = background.filter((item) => item.id.startsWith('education'));
+const experience = background.filter((item) =>
+	item.id.startsWith('experience'),
+);
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
-	<div class="stack gap-20">
-		<main class="wrapper about">
+<BaseLayout
+	title='About | Francisco Andreo'
+	description='A full track of my background, education, and skills.'>
+	<div class='stack gap-20'>
+		<main class='wrapper about'>
 			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
+				title='About'
+				tagline='Thanks for stopping by. Read below to learn more about myself and my background.'>
 				<img
-					width="1553"
-					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
+					class='tilt-full'
+					width='1553'
+					height='873'
+					src='/assets/at-work.jpg'
+					alt='Jeanine White at work with a colleague'
 				/>
 			</Hero>
 
 			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
-					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy.
-						Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
-					</p>
-					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
-					</p>
-					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
-					</p>
+				<h2 class='section-title'>Background</h2>
+				<div class='content'>
+					<ul>
+						{
+							experience.map((entry) => (
+								<li>
+									<h3>{entry.data.organization}</h3>
+									<p>{entry.data.title}</p>
+									<p>
+										{new Date(
+											entry.data.startDate,
+										).getFullYear()}{' '}
+										-{' '}
+										{entry.data.endDate
+											? new Date(
+													entry.data.endDate,
+												).getFullYear()
+											: 'Current'}
+									</p>
+									<p>{entry.data.description}</p>
+								</li>
+							))
+						}
+					</ul>
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+				<h2 class='section-title'>Education</h2>
+				<div class='content'>
+					<ul>
+						{
+							education.map((entry) => (
+								<li>
+									<h3>{entry.data.title}</h3>
+									<p>
+										{entry.data.grade} -{' '}
+										{entry.data.organization}
+									</p>
+									<p>
+										{new Date(
+											entry.data.startDate,
+										).getFullYear()}{' '}
+										-{' '}
+										{new Date(
+											entry.data.endDate,
+										).getFullYear()}
+									</p>
+									<p>{entry.data.description}</p>
+								</li>
+							))
+						}
+					</ul>
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
+				<h2 class='section-title'>Skills</h2>
+				<div class='content'>
 					<p>officia unde omnis</p>
 				</div>
 			</section>
@@ -59,6 +97,7 @@ import Hero from '../components/Hero.astro';
 
 		<ContactCTA />
 	</div>
+	
 </BaseLayout>
 
 <style>
@@ -78,6 +117,7 @@ import Hero from '../components/Hero.astro';
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+		row-gap: 2rem;
 		color: var(--gray-200);
 	}
 
@@ -89,6 +129,21 @@ import Hero from '../components/Hero.astro';
 
 	.content {
 		grid-column: 2 / 4;
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			padding: 0;
+
+			li {
+				list-style-type: none;
+				h3 {
+					font-size: var(--text-2xl);
+					color: var(--accent-regular);
+				}
+			}
+		}
 	}
 
 	.content :global(a) {
