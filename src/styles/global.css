@@ -1,7 +1,8 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 /* Global variables */
 :root {
-	/* Colors */
+	/* Colors
 	--gray-0: #090b11;
 	--gray-50: #141925;
 	--gray-100: #283044;
@@ -15,8 +16,8 @@
 	--gray-900: #f3f4f7;
 	--gray-999-basis: 0, 0%, 100%;
 	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
-	--gray-999: #ffffff;
-
+	--gray-999: #ffffff; */
+/* 
 	--accent-light: hsl(226, 100%, 80%);
 	--accent-regular: #2457ff;
 	--accent-dark: #1c0056;
@@ -24,31 +25,27 @@
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
-	--link-color: var(--accent-regular);
+	--link-color: var(--accent-regular); */
 
 	/* Gradients */
 	--gradient-stop-1: var(--accent-light);
 	--gradient-stop-2: var(--accent-regular);
 	--gradient-stop-3: var(--accent-dark);
 	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 150%);
-	--gradient-accent: linear-gradient(
-		150deg,
-		var(--gradient-stop-1),
-		var(--gradient-stop-2),
-		var(--gradient-stop-3)
-	);
-	--gradient-accent-orange: linear-gradient(
-		150deg,
-		#ca7879,
-		var(--accent-regular),
-		var(--accent-dark)
-	);
+	--gradient-accent: linear-gradient(150deg,
+			var(--gradient-stop-1),
+			var(--gradient-stop-2),
+			var(--gradient-stop-3));
+	--gradient-accent-orange: linear-gradient(150deg,
+			#ca7879,
+			var(--accent-regular),
+			var(--accent-dark));
 	--gradient-stroke: linear-gradient(180deg, var(--gray-900), var(--gray-700));
 
 	/* Shadows */
 	--shadow-sm: 0px 6px 3px rgba(9, 11, 17, 0.01), 0px 4px 2px rgba(9, 11, 17, 0.01),
 		0px 2px 2px rgba(9, 11, 17, 0.02), 0px 0px 1px rgba(9, 11, 17, 0.03);
-	--shadow-md: 0px 4px 16px rgba(36,87,255,0.31), 0px 8px 32px rgba(36,87,255,0.23);
+	--shadow-md: 0px 4px 16px rgba(36, 87, 255, 0.31), 0px 8px 32px rgba(36, 87, 255, 0.23);
 	--shadow-lg: 0px 62px 25px rgba(9, 11, 17, 0.01), 0px 35px 21px rgba(9, 11, 17, 0.05),
 		0px 16px 16px rgba(9, 11, 17, 0.1), 0px 4px 9px rgba(9, 11, 17, 0.12);
 
@@ -97,14 +94,12 @@
 
 	--link-color: var(--accent-dark);
 
-	--gradient-stop-1: #4c11c6;
+	/* --gradient-stop-1: #4c11c6; */
 	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 81%);
-	--gradient-accent-orange: linear-gradient(
-		150deg,
-		#ca7879,
-		var(--accent-regular),
-		var(--accent-light)
-	);
+	/* --gradient-accent-orange: linear-gradient(150deg,
+			#ca7879,
+			var(--accent-regular),
+			var(--accent-light)); */
 	--gradient-stroke: linear-gradient(180deg, var(--gray-600), var(--gray-800));
 
 	--shadow-sm: 0px 6px 3px rgba(255, 255, 255, 0.01), 0px 4px 2px rgba(255, 255, 255, 0.01),
@@ -126,6 +121,8 @@ body {
 	font-family: var(--font-body);
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.5;
+
+	cursor: url('/assets/cursor/SCnormal.png'), pointer;
 }
 
 *,
@@ -204,24 +201,31 @@ h5 {
 .gap-2 {
 	gap: 0.5rem;
 }
+
 .gap-4 {
 	gap: 1rem;
 }
+
 .gap-8 {
 	gap: 2rem;
 }
+
 .gap-10 {
 	gap: 2.5rem;
 }
+
 .gap-15 {
 	gap: 3.75rem;
 }
+
 .gap-20 {
 	gap: 5rem;
 }
+
 .gap-30 {
 	gap: 7.5rem;
 }
+
 .gap-48 {
 	gap: 12rem;
 }
@@ -230,24 +234,31 @@ h5 {
 	.lg\:gap-2 {
 		gap: 0.5rem;
 	}
+
 	.lg\:gap-4 {
 		gap: 1rem;
 	}
+
 	.lg\:gap-8 {
 		gap: 2rem;
 	}
+
 	.lg\:gap-10 {
 		gap: 2.5rem;
 	}
+
 	.lg\:gap-15 {
 		gap: 3.75rem;
 	}
+
 	.lg\:gap-20 {
 		gap: 5rem;
 	}
+
 	.lg\:gap-30 {
 		gap: 7.5rem;
 	}
+
 	.lg\:gap-48 {
 		gap: 12rem;
 	}

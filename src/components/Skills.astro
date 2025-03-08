@@ -4,7 +4,8 @@ import {stats} from '../lang/en';
 ---
 
 <section class='box skills'>
-	<pixel-canvas data-gap="3" data-speed="100" data-colors="#2255ff"></pixel-canvas>
+	<pixel-canvas data-gap='3' data-speed='100' data-colors='#2255ff'
+	></pixel-canvas>
 	{
 		stats.map((stat: any) => (
 			<div class='stack gap-2 lg:gap-4'>
@@ -41,6 +42,9 @@ import {stats} from '../lang/en';
 		gap: 3rem;
 		position: relative;
 		overflow: hidden;
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
 
 		pixel-canvas {
 			position: absolute;
@@ -78,4 +82,4 @@ import {stats} from '../lang/en';
 	}
 </style>
 
-<script type="module" src="/src/scripts/pixel-canvas.js"></script>
+<script type='module' src='/src/scripts/pixel-canvas.js'></script>
