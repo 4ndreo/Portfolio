@@ -5,13 +5,13 @@ organization: IT4W SA
 startDate: 2023-06-01 00:00:00
 # endDate:
 tags:
-  - React.js
-  - Vue.js
+  - Next
+  - Angular
   - Laravel
-  - Node.js
-  - SQL
-  - MongoDB
-  - Illustrator
-  - Photoshop
+  - Nest
+  - SQLServer
+  - MySQL
   - Docker
+  - Azure
+  - Github
 ---

@@ -25,4 +25,13 @@ export const collections = {
 			tags: z.array(z.string()),
 		}),
 	}),
+	languages: defineCollection({
+		type: 'content',
+		schema: z.object({
+			title: z.string(),
+			grade: z.string(),
+			exam: z.string(),
+			organization: z.string(),
+		}),
+	}),
 };

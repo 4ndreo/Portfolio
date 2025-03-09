@@ -11,7 +11,7 @@ const iconComponents: any = Icons;
 			{
 				stats
 					.find((stat) => stat.title === 'technologies')
-					?.data.map((stat: any) => {
+					?.data?.map((stat: any) => {
 						const IconComponent = iconComponents[stat.icon]; // Get the component reference
 						return (
 							<div class='brandLogo' title={stat.name}>
@@ -24,7 +24,7 @@ const iconComponents: any = Icons;
 			{
 				stats
 					.find((stat) => stat.title === 'technologies')
-					?.data.map((stat: any) => {
+					?.data?.map((stat: any) => {
 						const IconComponent = iconComponents[stat.icon]; // Get the component reference
 						return (
 							<div class='brandLogo' title={stat.name}>

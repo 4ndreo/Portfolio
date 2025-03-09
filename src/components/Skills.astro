@@ -16,11 +16,10 @@ import {stats} from '../lang/en';
 					gradient
 				/>
 				<h2>
-					+ {stat.data.length} {stat.title}
+					+ {stat.data?.length ?? stat.metric} {stat.title}
 				</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod.
+					{stat.subtitle}
 				</p>
 			</div>
 		))

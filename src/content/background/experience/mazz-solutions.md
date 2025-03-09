@@ -5,13 +5,7 @@ organization: Mazz Solutions
 startDate: 2020-03-01 00:00:00
 endDate: 2021-06-01 00:00:00
 tags:
-  - React.js
-  - Vue.js
-  - Laravel
-  - Node.js
-  - SQL
-  - MongoDB
-  - Illustrator
-  - Photoshop
-  - Docker
+  - PowerBI
+  - Microstrategy
+  - SQLServer
 ---

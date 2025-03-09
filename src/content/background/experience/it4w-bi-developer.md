@@ -5,13 +5,8 @@ organization: IT4W SA
 startDate: 2021-03-01 00:00:00
 endDate: 2023-06-01 00:00:00
 tags:
-  - React.js
-  - Vue.js
-  - Laravel
-  - Node.js
-  - SQL
-  - MongoDB
-  - Illustrator
-  - Photoshop
-  - Docker
+  - PowerBI
+  - Microstrategy
+  - SQLServer
+  - Azure
 ---

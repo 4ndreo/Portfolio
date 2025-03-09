@@ -6,13 +6,14 @@ organization: Da Vinci School
 startDate: 2020-03-01 00:00:00
 endDate: 2023-12-15 00:00:00
 tags:
-  - React.js
-  - Vue.js
+  - React
+  - Vue
   - Laravel
-  - Node.js
-  - SQL
+  - Express
+  - MySQL
   - MongoDB
+  - Github
+  - Docker
   - Illustrator
   - Photoshop
-  - Docker
 ---

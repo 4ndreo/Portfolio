@@ -1,6 +1,6 @@
 export const home = {
-  title_main: 'Hello, my name is Francisco',
-  tagline_main: 'I am a Creative Developer who is currently based in Buenos Aires, Argentina.',
+  title_main: 'Software engineer and builder',
+  tagline_main: 'I\'m Francisco, a full-stack developer who crafts digital experiences for the web.',
   pills: [{
     icon: 'bi-code-slash',
     label: 'Developer',
@@ -18,7 +18,7 @@ export const home = {
 
 export const stats = [{
   title: 'projects',
-  icon: 'terminal-window',
+  icon: 'trophy',
   data: [
     { name: 'In Vitro', company: 'In Vitro' },
     { name: 'Sostenibilidad', company: 'ENEX' },
@@ -26,11 +26,12 @@ export const stats = [{
     { name: 'Sistema Pyme', company: 'IT4W' },
     { name: 'qubo', company: 'IT4W' },
     { name: 'Landing Infinity Digital', company: 'Infinity Digital' },
-  ]
-  // subtitle: 'Projects',
-}, {
+  ],
+  subtitle: 'Built carefully to meet a purpose.',
+},
+{
   title: 'technologies',
-  icon: 'trophy',
+  icon: 'terminal-window',
   data: [
     { name: 'Next.js', type: 'frontend', icon: 'NextIcon' },
     { name: 'React', type: 'frontend', icon: 'ReactIcon' },
@@ -49,12 +50,20 @@ export const stats = [{
     { name: 'PostgresSQL', type: 'database', icon: 'PostgresSQLIcon' },
     { name: 'MongoDB', type: 'database', icon: 'MongoDBIcon' },
     { name: 'Github', type: 'repo', icon: 'GithubIcon' },
+    { name: 'Docker', type: 'repo', icon: 'DockerIcon' },
     { name: 'Azure', type: 'devops', icon: 'AzureIcon' },
     { name: 'Cloudflare', type: 'devops', icon: 'CloudflareIcon' },
     { name: 'Nginx', type: 'network', icon: 'NginxIcon' },
     { name: 'Photoshop', type: 'design', icon: 'PhotoshopIcon' },
     { name: 'Illustrator', type: 'design', icon: 'IllustratorIcon' },
     { name: 'Figma', type: 'design', icon: 'FigmaIcon' },
-  ]
-  // subtitle: 'Projects',
-},]
+  ],
+  subtitle: 'A wide tool belt for all kinds of solutions.',
+},
+{
+  title: 'years of experience',
+  icon: 'clock',
+  metric: new Date().getFullYear() - 2023,
+  subtitle: 'Full-time dedication to development.',
+},
+]
