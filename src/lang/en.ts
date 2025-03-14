@@ -16,19 +16,15 @@ export const home = {
   ]
 };
 
-export const stats = [{
-  title: 'projects',
-  icon: 'trophy',
-  data: [
-    { name: 'In Vitro', company: 'In Vitro' },
-    { name: 'Sostenibilidad', company: 'ENEX' },
-    { name: 'Tactic', company: 'ENEX' },
-    { name: 'Sistema Pyme', company: 'IT4W' },
-    { name: 'qubo', company: 'IT4W' },
-    { name: 'Landing Infinity Digital', company: 'Infinity Digital' },
-  ],
-  subtitle: 'Built carefully to meet a purpose.',
-},
+export const stats = [
+//   {
+//   title: 'projects',
+//   icon: 'trophy',
+//   data: [
+//     { name: 'Admin Mediabus TV', company: 'mediabus' },
+//   ],
+//   subtitle: 'Built carefully to meet a purpose.',
+// },
 {
   title: 'technologies',
   icon: 'terminal-window',

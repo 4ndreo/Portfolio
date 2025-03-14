@@ -11,6 +11,8 @@ const __dirname = path.dirname(__filename);
 const websites = [
   { name: 'infinity-digital', url: 'https://infinitydigital-beta.vercel.app' },
   { name: 'mt-consultores', url: 'https://mtconsultores.com.ar' },
+  { name: 'ccpm', url: 'https://ccpm.org.ar' },
+  { name: 'wecomex', url: 'https://wecomex.ai/home' },
 ];
 
 (async () => {

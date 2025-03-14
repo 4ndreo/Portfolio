@@ -1,14 +1,15 @@
 ---
-title: MT Consultores
-publishDate: 2020-08-26 00:00:00
-link: https://mtconsultores.com.ar
-img: /assets/screenshots/mt-consultores.png
+title: Infinity Digital
+publishDate: 2024-03-22 00:00:00
+show: true
+link: https://infinitydigital-beta.vercel.app/
+img: /assets/screenshots/infinity-digital.png
 img_alt: Screenshot from the home page of Infinity Digital's website
 description: |
   We developed brand positioning and design assets for the launch
   of a new colored water product.
 tags:
-  - Donweb Site Builder
+  - Next.js
   - Branding
 ---
 

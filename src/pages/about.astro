@@ -5,11 +5,14 @@ import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import {getCollection} from 'astro:content';
 
+const languages = await getCollection('languages');
+const contact = await getCollection('contact');
 const background = (await getCollection('background')).sort(
 	(a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf(),
 );
-const languages = await getCollection('languages');
 import * as Icons from '../components/icons/index.astro';
+import { Image } from 'astro:assets';
+import HeroAbout from '../components/HeroAbout.astro';
 const iconComponents: any = Icons;
 
 const education = background.filter((item) => item.id.startsWith('education'));
@@ -23,17 +26,14 @@ const experience = background.filter((item) =>
 	description='A full track of my background, education, and skills.'>
 	<div class='stack gap-20'>
 		<main class='wrapper about'>
-			<Hero
-				title='About'
-				tagline='Thanks for stopping by. Read below to learn more about myself and my background.'>
-				<img
-					class='tilt-full'
-					width='1553'
-					height='873'
-					src='/assets/at-work.jpg'
-					alt='Jeanine White at work with a colleague'
-				/>
-			</Hero>
+			<header class='hero'>
+				<HeroAbout
+					data={contact[0].data}
+					align='start'>
+				</HeroAbout>
+
+				
+			</header>
 
 			<section>
 				<h2 class='section-title'>Work experience</h2>
@@ -172,6 +172,9 @@ const experience = background.filter((item) =>
 		display: flex;
 		flex-direction: column;
 		gap: 3.5rem;
+		& > :global(:first-child) {
+			grid-column-start: 2;
+		}
 	}
 
 	img {
@@ -264,6 +267,7 @@ const experience = background.filter((item) =>
 
 		.about > :global(:first-child) {
 			grid-column-start: 2;
+			grid-column-end: 4;
 		}
 
 		section {

@@ -1,0 +1,143 @@
+---
+import {Image} from 'astro:assets';
+
+interface Props {
+	data: any;
+	align?: 'start' | 'center';
+}
+
+const {align = 'start', data} = Astro.props;
+const date = new Date(data.birthDate);
+date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+---
+
+<div class:list={['hero', align]}>
+	<Image
+		class='tilt-full'
+		alt='Francisco Andreo smiling in a black t-shirt'
+		width='480'
+		height='620'
+		src='/assets/portrait.jpg'
+	/>
+	<div class='stack gap-2'>
+		<h1 class='data'>{data.firstName + ' ' + data.lastName}</h1>
+		<ul>
+			<li>
+				<i class='bi-github'></i><a
+					href={'https://github.com/' + data.github}>{data.github}</a
+				>
+			</li>
+			<li>
+				<i class='bi-linkedin'></i><a
+					href={'https://www.linkedin.com/in' + data.linkedin}
+					>{data.linkedin}</a
+				>
+			</li>
+			<li>
+				<i class='bi-envelope-at'></i>
+				<a href={'mailto:' + data.email}>{data.email}</a>
+			</li>
+			<li>
+				<i class='bi-whatsapp'></i><a href='https://wa.link/acouyf'>
+					{data.phone}</a
+				>
+			</li>
+			<li>
+				<i class='bi-pin-map'></i>{data.city + ', ' + data.country}
+			</li>
+			<li>
+				<i class='bi-calendar-date'></i>{
+					new Intl.DateTimeFormat('es-AR', {
+						dateStyle: 'long',
+					}).format(date)
+				}
+			</li>
+		</ul>
+	</div>
+	<slot />
+</div>
+
+<style>
+	.hero {
+		font-size: var(--text-lg);
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+
+		img {
+			aspect-ratio: 1 / 1;
+			border-radius: 999rem;
+			object-fit: cover;
+			width: 65%;
+			height: auto;
+		}
+
+		.stack {
+			justify-content: space-between;
+			ul {
+				display: flex;
+				flex-direction: column;
+				padding: 0;
+				gap: 0.5rem;
+				li {
+					list-style-type: none;
+					display: flex;
+					/* align-items: top; */
+					gap: 1rem;
+					color: var(--gray-200);
+					a {
+						color: var(--gray-200);
+						text-decoration: none;
+						transition: color var(--theme-transition);
+
+						&:hover {
+							color: var(--gray-0);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.title,
+	.tagline {
+		max-width: 37ch;
+		margin-inline: auto;
+	}
+
+	.title {
+		font-size: var(--text-3xl);
+		color: var(--gray-0);
+	}
+
+	@media (min-width: 50em) {
+		.hero {
+			font-size: var(--text-xl);
+			flex-direction: row;
+			align-items: initial;
+		}
+
+		.hero img {
+			aspect-ratio: 3 / 4;
+			border-radius: 2rem;
+			object-fit: cover;
+			width: 30%;
+			height: auto;
+		}
+
+		.start {
+			text-align: start;
+		}
+
+		.start .title,
+		.start .tagline {
+			margin-inline: unset;
+		}
+
+		.title {
+			font-size: var(--text-5xl);
+		}
+	}
+</style>
