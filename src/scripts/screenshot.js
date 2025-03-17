@@ -34,10 +34,15 @@ const websites = [
   }
 
   for (const site of websites) {
+    const filePath = path.join(screenshotsDir, `${site.name}.png`);
+    if (fs.existsSync(filePath)) {
+      console.log(`✅ Screenshot for ${site.name} already exists. Skipping.`);
+      continue;  // Skip this website if screenshot exists
+    }
+
     console.log(`Capturing: ${site.url}`);
     await page.goto(site.url, { timeout: 0, waitUntil: "networkidle2" });
 
-    const filePath = path.join(screenshotsDir, `${site.name}.png`);
     await page.screenshot({ path: filePath, fullPage: false });
   }
 
