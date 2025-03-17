@@ -5,37 +5,37 @@ import {stats} from '../lang/en';
 const iconComponents: any = Icons;
 ---
 
-<section class=''>
-	<div class='container brandsCarousel'>
-		<div class='d-flex carouselTrack'>
-			{
-				stats
-					.find((stat) => stat.title === 'technologies')
-					?.data?.map((stat: any) => {
-						const IconComponent = iconComponents[stat.icon]; // Get the component reference
-						return (
-							<div class='brandLogo' title={stat.name}>
-								<IconComponent />
-							</div>
-						);
-					})
-			}
-			<!--- IMPORTANT: The content below includes clones of the original logos, which are necessary to create a seamless infinite loop effect. --->
-			{
-				stats
-					.find((stat) => stat.title === 'technologies')
-					?.data?.map((stat: any) => {
-						const IconComponent = iconComponents[stat.icon]; // Get the component reference
-						return (
-							<div class='brandLogo' title={stat.name}>
-								<IconComponent />
-							</div>
-						);
-					})
-			}
-		</div>
+<!-- <section class=''> -->
+<div class='container brandsCarousel'>
+	<div class='d-flex carouselTrack'>
+		{
+			stats
+				.find((stat) => stat.title === 'technologies')
+				?.data?.map((stat: any) => {
+					const IconComponent = iconComponents[stat.icon]; // Get the component reference
+					return (
+						<div class='brandLogo' title={stat.name}>
+							<IconComponent />
+						</div>
+					);
+				})
+		}
+		<!--- IMPORTANT: The content below includes clones of the original logos, which are necessary to create a seamless infinite loop effect. --->
+		{
+			stats
+				.find((stat) => stat.title === 'technologies')
+				?.data?.map((stat: any) => {
+					const IconComponent = iconComponents[stat.icon]; // Get the component reference
+					return (
+						<div class='brandLogo' title={stat.name}>
+							<IconComponent />
+						</div>
+					);
+				})
+		}
 	</div>
-</section>
+</div>
+<!-- </section> -->
 
 <style>
 	:root {
@@ -65,7 +65,11 @@ const iconComponents: any = Icons;
 		max-height: 100px;
 		margin: auto;
 		/* overflow: hidden; */
-		position: relative;
+		/* position: relative; */
+		position: absolute;
+		overflow: hidden;
+		width: 100vw;
+		left: 0;
 	}
 
 	/* .brandsCarousel::before,
@@ -102,7 +106,7 @@ const iconComponents: any = Icons;
 		will-change: transform;
 	}
 	.carouselTrack:hover {
-		animation-play-state: paused; 
+		animation-play-state: paused;
 	}
 
 	.brandLogo {

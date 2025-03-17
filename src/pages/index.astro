@@ -91,7 +91,7 @@ const projects = (await getCollection('work'))
 				</div>
 			</section>
 
-			<section class='with-background'>
+			<section class='with-background infinite-carousel'>
 				<InfiniteCarousel />
 			</section>
 			
@@ -152,6 +152,10 @@ const projects = (await getCollection('work'))
 
 	.with-background {
 		position: relative;
+	}
+
+	.infinite-carousel {
+		position: unset;
 	}
 
 	.with-background::before {
