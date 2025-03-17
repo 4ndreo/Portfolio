@@ -43,24 +43,26 @@ const iconComponents: any = Icons;
 </div>
 
 <script>
-	const cards = document.querySelectorAll('.card-preview');
-	if (window.innerWidth > 800) {
-		// Handle clicks on each button.
-		cards.forEach((button) => {
-			const link = button?.getAttribute('data-link');
-			if (link) {
-				button.addEventListener('click', () => {
-					window.location.assign(link);
-				});
-			}
-		});
-	} else {
-		cards.forEach((button) => {
-			button.addEventListener('click', () => {
-				button.classList.toggle('clicked');
+	document.addEventListener('astro:page-load', () => {
+		const cards = document.querySelectorAll('.card-preview');
+		if (window.innerWidth > 800) {
+			// Handle clicks on each button.
+			cards.forEach((button) => {
+				const link = button?.getAttribute('data-link');
+				if (link) {
+					button.addEventListener('click', () => {
+						window.location.assign(link);
+					});
+				}
 			});
-		});
-	}
+		} else {
+			cards.forEach((button) => {
+				button.addEventListener('click', () => {
+					button.classList.toggle('clicked');
+				});
+			});
+		}
+	});
 </script>
 
 <style>
