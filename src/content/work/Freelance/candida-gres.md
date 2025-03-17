@@ -11,4 +11,4 @@ tags:
   - Javascript
 ---
 
-Built a sleek, lightweight website for a law firm, balancing professionalism with a timeless design. Strategically placed CTA buttons enhance user engagement, ensuring seamless navigation and conversion.
+This site connects Cándida Gres, a pottery workshop, with it's students through a clean and useful interface, where they can enroll to different shifts, preview their fees and even buy some products handmade by the workshop's owner.
