@@ -29,7 +29,7 @@ const iconComponents: any = Icons;
 				data.link ? (
 					<>
 						<i class='bi bi-globe-americas' />
-						<a href={data.link}>View development</a>
+						<a href={data.link} target="_blank">View development</a>
 					</>
 				) : (
 					<>
@@ -51,7 +51,7 @@ const iconComponents: any = Icons;
 				const link = button?.getAttribute('data-link');
 				if (link) {
 					button.addEventListener('click', () => {
-						window.location.assign(link);
+						window.open(link, '_blank')
 					});
 				}
 			});
