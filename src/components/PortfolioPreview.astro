@@ -56,12 +56,9 @@ const iconComponents: any = Icons;
 		});
 	} else {
 		cards.forEach((button) => {
-			const link = button?.getAttribute('data-link');
-			if (link) {
-				button.addEventListener('click', () => {
-					button.classList.toggle('clicked');
-				});
-			}
+			button.addEventListener('click', () => {
+				button.classList.toggle('clicked');
+			});
 		});
 	}
 </script>
