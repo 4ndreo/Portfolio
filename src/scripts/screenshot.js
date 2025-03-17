@@ -13,6 +13,7 @@ const websites = [
   { name: 'mt-consultores', url: 'https://mtconsultores.com.ar' },
   { name: 'ccpm', url: 'https://ccpm.org.ar' },
   { name: 'wecomex', url: 'https://wecomex.ai/home' },
+  { name: 'candida-gres', url: 'https://candidagres.pages.dev' },
 ];
 
 (async () => {
