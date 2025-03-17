@@ -35,7 +35,7 @@ const websites = [
 
   for (const site of websites) {
     console.log(`Capturing: ${site.url}`);
-    await page.goto(site.url, { waitUntil: 'networkidle2' });
+    await page.goto(site.url, { timeout: 0, waitUntil: "networkidle2" });
 
     const filePath = path.join(screenshotsDir, `${site.name}.png`);
     await page.screenshot({ path: filePath, fullPage: false });
