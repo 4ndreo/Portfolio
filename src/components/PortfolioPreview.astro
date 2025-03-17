@@ -43,15 +43,23 @@ const iconComponents: any = Icons;
 </div>
 
 <script>
+	const cards = document.querySelectorAll('.card-preview');
 	if (window.innerWidth > 800) {
-		const cards = document.querySelectorAll('.card-preview');
-
 		// Handle clicks on each button.
 		cards.forEach((button) => {
 			const link = button?.getAttribute('data-link');
 			if (link) {
 				button.addEventListener('click', () => {
 					window.location.assign(link);
+				});
+			}
+		});
+	} else {
+		cards.forEach((button) => {
+			const link = button?.getAttribute('data-link');
+			if (link) {
+				button.addEventListener('click', () => {
+					button.classList.toggle('clicked');
 				});
 			}
 		});
@@ -82,12 +90,12 @@ const iconComponents: any = Icons;
 		height: 100%;
 	}
 
-	.card:active {
+	.card.clicked {
 		box-shadow: var(--shadow-md);
 		margin-bottom: 12rem;
 	}
 
-	.card:active .content {
+	.card.clicked .content {
 		opacity: 100;
 	}
 
@@ -190,14 +198,22 @@ const iconComponents: any = Icons;
 			backdrop-filter: blur(0.5rem);
 		}
 
+		.card.clicked {
+			margin-bottom: unset;
+		}
+
+		.card.clicked .content {
+			opacity: 0;
+		}
+
 		.card:hover {
 			box-shadow: var(--shadow-md);
 			margin-bottom: unset;
 		}
 
-	.card:hover .content {
-		opacity: 100;
-	}
+		.card:hover .content {
+			opacity: 100;
+		}
 
 		.hidden {
 			overflow: unset;
