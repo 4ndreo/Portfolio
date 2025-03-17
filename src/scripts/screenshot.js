@@ -41,7 +41,7 @@ const websites = [
     }
 
     console.log(`Capturing: ${site.url}`);
-    await page.goto(site.url, { timeout: 0, waitUntil: "networkidle2" });
+    await page.goto(site.url, { timeout: 60000, waitUntil: "networkidle2" });
 
     await page.screenshot({ path: filePath, fullPage: false });
   }
