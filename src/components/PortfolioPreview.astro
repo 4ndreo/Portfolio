@@ -12,7 +12,7 @@ const {data, slug} = Astro.props.project;
 const iconComponents: any = Icons;
 ---
 
-<a class='card tilt' href={data.link}>
+<div class='card tilt card-preview' data-link={data.link}>
 	<span class='title'>{data.title}</span>
 	<div class='hidden'>
 		<img
@@ -29,29 +29,34 @@ const iconComponents: any = Icons;
 				data.link ? (
 					<>
 						<i class='bi bi-globe-americas' />
-						<span>View development</span>
+						<a href={data.link}>View development</a>
 					</>
 				) : (
 					<>
 						<i class='bi-lock-fill' />
 						<span>Private development</span>
-						{/* {data?.tags.map((tag: any) => {
-								const IconComponent = iconComponents[tag]; // Get the component reference
-								
-									if (IconComponent !== undefined) {
-											<div class='brandLogo' title={tag}>
-												<IconComponent />
-											</div>
-									} else {
-										undefined
-									}
-							})} */}
 					</>
 				)
 			}</span
 		>
 	</div>
-</a>
+</div>
+
+<script>
+	if (window.innerWidth > 800) {
+		const cards = document.querySelectorAll('.card-preview');
+
+		// Handle clicks on each button.
+		cards.forEach((button) => {
+			const link = button?.getAttribute('data-link');
+			if (link) {
+				button.addEventListener('click', () => {
+					window.location.assign(link);
+				});
+			}
+		});
+	}
+</script>
 
 <style>
 	.card {
@@ -77,12 +82,12 @@ const iconComponents: any = Icons;
 		height: 100%;
 	}
 
-	.card:hover {
+	.card:active {
 		box-shadow: var(--shadow-md);
 		margin-bottom: 12rem;
 	}
 
-	.card:hover .content {
+	.card:active .content {
 		opacity: 100;
 	}
 
@@ -120,7 +125,8 @@ const iconComponents: any = Icons;
 		backdrop-filter: blur(0.5rem);
 	}
 
-	.content .project-visibility-flag {
+	.content .project-visibility-flag,
+	.content .project-visibility-flag a {
 		color: var(--gray-300);
 	}
 
@@ -188,6 +194,10 @@ const iconComponents: any = Icons;
 			box-shadow: var(--shadow-md);
 			margin-bottom: unset;
 		}
+
+	.card:hover .content {
+		opacity: 100;
+	}
 
 		.hidden {
 			overflow: unset;
