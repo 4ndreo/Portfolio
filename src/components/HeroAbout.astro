@@ -21,7 +21,15 @@ date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 	/>
 	<div class='stack gap-2'>
 		<h1 class='data'>{data.firstName + ' ' + data.lastName}</h1>
-		<ul>
+		<p>
+			Results-driven Software Engineer with <strong
+				>expertise in frontend development, business intelligence, and
+				data architecture</strong
+			>. Skilled in <strong
+				>UI development, Git workflows, and tech evaluation</strong
+			>, ensuring seamless collaboration and project success.
+		</p>
+		<ul class='contact-info'>
 			<li>
 				<i class='bi-github'></i><a
 					href={'https://github.com/' + data.github}>{data.github}</a
@@ -76,6 +84,16 @@ date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
 		.stack {
 			justify-content: space-between;
+
+			h1 {
+				font-size: var(--text-2xl);
+			}
+
+			p {
+				font-size: var(--text-lg);
+				margin-bottom: 1rem;
+			}
+
 			ul {
 				display: flex;
 				flex-direction: column;
@@ -87,6 +105,7 @@ date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 					/* align-items: top; */
 					gap: 1rem;
 					color: var(--gray-200);
+					font-size: 1.25rem;
 					a {
 						color: var(--gray-200);
 						text-decoration: none;
@@ -117,6 +136,20 @@ date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 			font-size: var(--text-xl);
 			flex-direction: row;
 			align-items: initial;
+
+			.stack {
+				h1 {
+					font-size: var(--text-4xl);
+				}
+
+				p {
+					font-size: 1.5rem;
+				}
+				ul {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+				}
+			}
 		}
 
 		.hero img {

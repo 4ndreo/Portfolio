@@ -9,3 +9,6 @@ tags:
   - Microstrategy
   - SQLServer
 ---
+- <strong>Migrated the reporting system</strong> from Microstrategy to Power BI.
+- <strong>Designed a dynamic data visualization flow</strong> for efficient Covid-19 pandemic resource management.
+- Developed clear and structured <strong>financial dashboards for client use</strong>.

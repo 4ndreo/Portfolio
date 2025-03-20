@@ -1,24 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
 import {getCollection} from 'astro:content';
 
-const languages = await getCollection('languages');
-const contact = await getCollection('contact');
-const background = (await getCollection('background')).sort(
-	(a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf(),
-);
-import * as Icons from '../components/icons/index.astro';
-import { Image } from 'astro:assets';
 import HeroAbout from '../components/HeroAbout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import * as Icons from '../components/icons/index.astro';
+
 const iconComponents: any = Icons;
 
-const education = background.filter((item) => item.id.startsWith('education'));
-const experience = background.filter((item) =>
-	item.id.startsWith('experience'),
-);
+const collections = {
+	languages: await getCollection('languages'),
+	contact: await getCollection('contact'),
+	background: (await getCollection('background')).sort(
+		(a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf(),
+	),
+};
+
+const groupedBackground = {
+	education: collections.background.filter((item) =>
+		item.id.startsWith('education'),
+	),
+	experience: collections.background.filter((item) =>
+		item.id.startsWith('experience'),
+	),
+};
 ---
 
 <BaseLayout
@@ -27,12 +32,7 @@ const experience = background.filter((item) =>
 	<div class='stack gap-20'>
 		<main class='wrapper about'>
 			<header class='hero'>
-				<HeroAbout
-					data={contact[0].data}
-					align='start'>
-				</HeroAbout>
-
-				
+				<HeroAbout data={collections.contact[0].data} align='start' />
 			</header>
 
 			<section>
@@ -40,47 +40,56 @@ const experience = background.filter((item) =>
 				<div class='content'>
 					<ul class='data-list'>
 						{
-							experience.map((entry) => (
-								<li>
-									<div class='data-header'>
-										<div class='data-title'>
-											<h3>{entry.data.title}</h3>
-											<ul class='tech-list'>
-												{entry.data.tags.map((tag) => {
-													const tagIcon = `${tag}Icon`;
-													const IconComponent =
-														iconComponents[tagIcon]; // Get the component reference
-													return (
-														<li
-															class='brandLogo'
-															title={tag}>
-															<IconComponent />
-														</li>
-													);
-													// return <li>{tagIcon}</li>
-												})}
-											</ul>
-										</div>
+							groupedBackground.experience.map(async (entry) => {
+								const {Content} = await entry.render(); // Render Markdown Content
+								return (
+									<li>
+										<div class='data-header'>
+											<div class='data-title'>
+												<h3>{entry.data.title}</h3>
+												<ul class='tech-list'>
+													{entry.data.tags.map(
+														(tag) => {
+															const tagIcon = `${tag}Icon`;
+															const IconComponent =
+																iconComponents[
+																	tagIcon
+																]; // Get the component reference
+															return (
+																<li
+																	class='brandLogo'
+																	title={tag}>
+																	<IconComponent />
+																</li>
+															);
+															// return <li>{tagIcon}</li>
+														},
+													)}
+												</ul>
+											</div>
 
-										<p class='subtitle'>
-											{entry.data.organization}
+											<p class='subtitle'>
+												{entry.data.organization}
+											</p>
+										</div>
+										<p>
+											{new Date(
+												entry.data.startDate,
+											).getFullYear()}{' '}
+											-{' '}
+											{entry.data.endDate
+												? new Date(
+														entry.data.endDate ||
+															new Date(),
+													).getFullYear()
+												: 'Current'}
 										</p>
-									</div>
-									<p>
-										{new Date(
-											entry.data.startDate,
-										).getFullYear()}{' '}
-										-{' '}
-										{entry.data.endDate
-											? new Date(
-													entry.data.endDate ||
-														new Date(),
-												).getFullYear()
-											: 'Current'}
-									</p>
-									<p>{entry.data.description}</p>
-								</li>
-							))
+										<div class='entry-content'>
+											<Content />
+										</div>
+									</li>
+								);
+							})
 						}
 					</ul>
 				</div>
@@ -90,45 +99,55 @@ const experience = background.filter((item) =>
 				<div class='content'>
 					<ul class='data-list'>
 						{
-							education.map((entry) => (
-								<li>
-									<div class='data-header'>
-										<div class='data-title'>
-											<h3>{entry.data.title}</h3>
-											<ul class='tech-list'>
-												{entry.data.tags.map((tag) => {
-													const tagIcon = `${tag}Icon`;
-													const IconComponent =
-														iconComponents[tagIcon]; // Get the component reference
-													return (
-														<li
-															class='brandLogo'
-															title={tag}>
-															<IconComponent />
-														</li>
-													);
-													// return <li>{tagIcon}</li>
-												})}
-											</ul>
-										</div>
+							groupedBackground.education.map(async (entry) => {
+								const {Content} = await entry.render(); // Render Markdown Content
+								return (
+									<li>
+										<div class='data-header'>
+											<div class='data-title'>
+												<h3>{entry.data.title}</h3>
+												<ul class='tech-list'>
+													{entry.data.tags.map(
+														(tag) => {
+															const tagIcon = `${tag}Icon`;
+															const IconComponent =
+																iconComponents[
+																	tagIcon
+																]; // Get the component reference
+															return (
+																<li
+																	class='brandLogo'
+																	title={tag}>
+																	<IconComponent />
+																</li>
+															);
+															// return <li>{tagIcon}</li>
+														},
+													)}
+												</ul>
+											</div>
 
-										<p class='subtitle'>
-											{entry.data.grade}
+											<p class='subtitle'>
+												{entry.data.organization}
+											</p>
+										</div>
+										<p>{entry.data.grade}</p>
+										<p>
+											{new Date(
+												entry.data.startDate,
+											).getFullYear()}{' '}
+											-{' '}
+											{new Date(
+												entry.data.endDate ||
+													new Date(),
+											).getFullYear()}
 										</p>
-									</div>
-									<p>{entry.data.organization}</p>
-									<p>
-										{new Date(
-											entry.data.startDate,
-										).getFullYear()}{' '}
-										-{' '}
-										{new Date(
-											entry.data.endDate || new Date(),
-										).getFullYear()}
-									</p>
-									<p>{entry.data.description}</p>
-								</li>
-							))
+										<div class='entry-content'>
+											<Content />
+										</div>
+									</li>
+								);
+							})
 						}
 					</ul>
 				</div>
@@ -138,7 +157,7 @@ const experience = background.filter((item) =>
 				<div class='content'>
 					<ul class='data-list'>
 						{
-							languages.map((entry) => (
+							collections.languages.map((entry) => (
 								<li>
 									<div class='data-header'>
 										<div class='data-title'>
@@ -208,6 +227,21 @@ const experience = background.filter((item) =>
 
 			li {
 				list-style-type: none;
+
+				.entry-content {
+					margin-top: 1rem;
+					ul {
+						padding: 0;
+						display: flex;
+						flex-direction: column;
+						gap: 0.5rem;
+						li {
+							&::before {
+								content: '• ';
+							}
+						}
+					}
+				}
 				.data-header {
 					margin-bottom: 0.5rem;
 					.data-title {

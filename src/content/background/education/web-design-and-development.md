@@ -17,3 +17,4 @@ tags:
   - Illustrator
   - Photoshop
 ---
+I <strong>learned how to manage all stages of digital product development</strong>, from graphic design, modelling a working scheme, front-end and back-end.

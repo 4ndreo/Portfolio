@@ -15,3 +15,8 @@ tags:
   - Azure
   - Github
 ---
+- <strong>Evaluated and selected the best technologies</strong> for each project.
+- Maintained organization in Git workflows, <strong>ensuring smooth collaboration</strong>.
+- <strong>Developed complex UI components</strong> while strictly following client requirements.
+- <strong>Resolved technical conflicts</strong> and adapted technologies to fit project needs.
+- <strong>Actively contributed to teamwork</strong>, sharing knowledge and fostering collaboration.
