@@ -44,7 +44,7 @@ const experience = background.filter((item) =>
 								<li>
 									<div class='data-header'>
 										<div class='data-title'>
-											<h3>{entry.data.organization}</h3>
+											<h3>{entry.data.title}</h3>
 											<ul class='tech-list'>
 												{entry.data.tags.map((tag) => {
 													const tagIcon = `${tag}Icon`;
@@ -63,7 +63,7 @@ const experience = background.filter((item) =>
 										</div>
 
 										<p class='subtitle'>
-											{entry.data.title}
+											{entry.data.organization}
 										</p>
 									</div>
 									<p>
@@ -214,7 +214,7 @@ const experience = background.filter((item) =>
 						display: flex;
 						flex-wrap: wrap;
 						align-items: baseline;
-						column-gap: 1rem;
+						gap: 1rem;
 
 						h3 {
 							font-size: var(--text-2xl);
