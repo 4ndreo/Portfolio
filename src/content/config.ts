@@ -31,8 +31,8 @@ export const collections = {
 		schema: z.object({
 			title: z.string(),
 			grade: z.string(),
-			exam: z.string(),
-			organization: z.string(),
+			exam: z.string().optional(),
+			organization: z.string().optional(),
 		}),
 	}),
 	contact: defineCollection({
