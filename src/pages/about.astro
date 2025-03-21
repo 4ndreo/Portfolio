@@ -5,6 +5,7 @@ import {getCollection} from 'astro:content';
 import HeroAbout from '../components/HeroAbout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import * as Icons from '../components/icons/index.astro';
+import ExperienceContent from '../components/ExperienceContent.astro';
 
 const iconComponents: any = Icons;
 
@@ -44,49 +45,10 @@ const groupedBackground = {
 								const {Content} = await entry.render(); // Render Markdown Content
 								return (
 									<li>
-										<div class='data-header'>
-											<div class='data-title'>
-												<h3>{entry.data.title}</h3>
-												<ul class='tech-list'>
-													{entry.data.tags.map(
-														(tag) => {
-															const tagIcon = `${tag}Icon`;
-															const IconComponent =
-																iconComponents[
-																	tagIcon
-																]; // Get the component reference
-															return (
-																<li
-																	class='brandLogo'
-																	title={tag}>
-																	<IconComponent />
-																</li>
-															);
-															// return <li>{tagIcon}</li>
-														},
-													)}
-												</ul>
-											</div>
-
-											<p class='subtitle'>
-												{entry.data.organization}
-											</p>
-										</div>
-										<p>
-											{new Date(
-												entry.data.startDate,
-											).getFullYear()}{' '}
-											-{' '}
-											{entry.data.endDate
-												? new Date(
-														entry.data.endDate ||
-															new Date(),
-													).getFullYear()
-												: 'Current'}
-										</p>
-										<div class='entry-content'>
-											<Content />
-										</div>
+										<ExperienceContent
+											data={entry.data}
+											Content={Content}
+										/>
 									</li>
 								);
 							})
@@ -103,48 +65,10 @@ const groupedBackground = {
 								const {Content} = await entry.render(); // Render Markdown Content
 								return (
 									<li>
-										<div class='data-header'>
-											<div class='data-title'>
-												<h3>{entry.data.title}</h3>
-												<ul class='tech-list'>
-													{entry.data.tags.map(
-														(tag) => {
-															const tagIcon = `${tag}Icon`;
-															const IconComponent =
-																iconComponents[
-																	tagIcon
-																]; // Get the component reference
-															return (
-																<li
-																	class='brandLogo'
-																	title={tag}>
-																	<IconComponent />
-																</li>
-															);
-															// return <li>{tagIcon}</li>
-														},
-													)}
-												</ul>
-											</div>
-
-											<p class='subtitle'>
-												{entry.data.organization}
-											</p>
-										</div>
-										<p>{entry.data.grade}</p>
-										<p>
-											{new Date(
-												entry.data.startDate,
-											).getFullYear()}{' '}
-											-{' '}
-											{new Date(
-												entry.data.endDate ||
-													new Date(),
-											).getFullYear()}
-										</p>
-										<div class='entry-content'>
-											<Content />
-										</div>
+										<ExperienceContent
+											data={entry.data}
+											Content={Content}
+										/>
 									</li>
 								);
 							})
@@ -227,53 +151,6 @@ const groupedBackground = {
 
 			li {
 				list-style-type: none;
-
-				.entry-content {
-					margin-top: 1rem;
-					ul {
-						padding: 0;
-						display: flex;
-						flex-direction: column;
-						gap: 0.5rem;
-						li {
-							&::before {
-								content: '• ';
-							}
-						}
-					}
-				}
-				.data-header {
-					margin-bottom: 0.5rem;
-					.data-title {
-						display: flex;
-						flex-wrap: wrap;
-						align-items: baseline;
-						gap: 1rem;
-
-						h3 {
-							font-size: var(--text-2xl);
-						}
-
-						.tech-list {
-							display: flex;
-							flex-wrap: wrap;
-							gap: 0.5rem;
-							padding: 0;
-							/* justify-content: flex-start; */
-
-							.brandLogo {
-								width: 25px;
-								height: fit-content;
-								/* margin: auto; */
-								overflow: hidden;
-							}
-						}
-					}
-					.subtitle {
-						font-size: var(--text-md);
-						color: var(--accent-regular);
-					}
-				}
 			}
 		}
 	}

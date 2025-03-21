@@ -1,7 +1,8 @@
 ---
 title: Business Intelligence Analyst
 description: I generated reports by efficiently executing ETL data to deliver greater value to businesses.
-organization: Mazz Solutions
+organization: Data Riders
+organization_url: https://datariders.io/
 startDate: 2020-03-01 00:00:00
 endDate: 2021-06-01 00:00:00
 tags:

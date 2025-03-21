@@ -21,6 +21,7 @@ export const collections = {
 			grade: z.string().optional(),
 			description: z.string(),
 			organization: z.string(),
+			organization_url: z.string().optional(),
 			startDate: z.coerce.date(),
 			endDate: z.coerce.date().optional(),
 			tags: z.array(z.string()),

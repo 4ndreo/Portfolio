@@ -1,0 +1,34 @@
+---
+const {IconComponent, tag, width, fontSize} = Astro.props;
+---
+
+<div class='tech-pill'>
+	<pixel-canvas data-gap='3' data-speed='20' data-colors='#2255ff'
+	></pixel-canvas>
+	<IconComponent width={width} />
+	<span style={'font-size: ' + fontSize + ';'}>{tag}</span>
+</div>
+
+<style>
+	.tech-pill {
+		display: flex;
+		position: relative;
+		overflow: hidden;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		border-radius: 99rem;
+		border: 1px solid var(--light-gray);
+		box-shadow: var(--shadow-sm);
+
+		pixel-canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+		}
+	}
+</style>
+<script type='module' src='/scripts/pixel-canvas.js'></script>

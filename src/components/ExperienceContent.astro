@@ -1,0 +1,96 @@
+---
+import * as Icons from '../components/icons/index.astro';
+import TechnologyPill from './TechnologyPill.astro';
+
+const {data, Content} = Astro.props;
+const iconComponents: any = Icons;
+---
+
+<>
+	<div class='data-header'>
+		<div class='data-title'>
+			<h3>{data.title}</h3>
+		</div>
+
+		<a href={data.organization_url} target="_blank" class='subtitle'>{data.organization}</a>
+	</div>
+	<p>{data.grade}</p>
+	<p>
+		{new Date(data.startDate).getFullYear()} -{' '}
+		{data.endDate
+            ? new Date(
+                    data.endDate ||
+                        new Date(),
+                ).getFullYear()
+            : 'Current'}
+	</p>
+	<div class='entry-content'>
+		<Content />
+	</div>
+	<ul class='tech-list'>
+		{
+			data.tags.map((tag: string) => {
+				const tagIcon = `${tag}Icon`;
+				const IconComponent = iconComponents[tagIcon]; // Get the component reference
+				return (
+					<li class='brandLogo' title={tag}>
+						<TechnologyPill
+							IconComponent={IconComponent}
+							tag={tag}
+							width={'20px'}
+                            fontSize={'var(--text-sm)'}
+						/>
+					</li>
+				);
+			})
+		}
+	</ul>
+</>
+<style>
+	.entry-content {
+		margin-top: 1rem;
+		margin-bottom: 1.5rem;
+		ul {
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			li {
+				&::before {
+					content: '• ';
+				}
+			}
+		}
+	}
+	.data-header {
+		margin-bottom: 0.5rem;
+		.data-title {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			gap: 1rem;
+
+			h3 {
+				font-size: var(--text-2xl);
+			}
+		}
+		.subtitle {
+			font-size: var(--text-md);
+			color: var(--accent-regular);
+		}
+	}
+	.tech-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 0;
+		/* justify-content: flex-start; */
+		li {
+			display: flex;
+			.brandLogo {
+				height: fit-content;
+				overflow: hidden;
+			}
+		}
+	}
+</style>
